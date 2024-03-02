@@ -29,7 +29,6 @@ function loop() {
   if (player.autobuyall) {
     buyall()
   }
-  player.scstart[1] = E('1.8e388')
 }
 function calcdim() {
   for (let i = 1; i <= 7; i++) {
