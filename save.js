@@ -37,7 +37,7 @@ function transformToE(object) {
 
 function save() {
 	localStorage.setItem("pts-inc", JSON.stringify(player))
-	//console.count('本次保存次数')
+	console.count('本次保存次数')
 }
 
 setInterval(save, 10)
