@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>点数增量</title>
+    <link rel="stylesheet" href="style.css">
+    
+    <script src="ExpantaNum.js"></script>
+    <script src="format-expantanum.js"></script>
+    <script src="save.js"></script>
+    <script src="script.js"></script>
+    <script src="display.js"></script>
+</head>
+<body onload="load()">
+    <div align="center">你有<div align="center" class="pts-dis" id="pts">114514</div>点数<br>当前Endgame: 100 维度8(e80点数)</div><br><br>
+    <div id="page1">
+    <div id="dims" align="center">
+    <button onclick="buyall()" class="btn">全部购买(1个)</button>
+    <div id="dim1">
+      <span>维度1 </span><span id="d1">114514</span><span> x</span><span id="dm1">1919810</span><span> </span>
+      <button class="btn" id="dbtn1" onclick="buydim(1)">价格：114514</button>
+    </div>
+    <div id="dim2">
+      <span>维度2 </span><span id="d2">114514</span><span> x</span><span id="dm2">1919810</span><span> </span>
+      <button class="btn" id="dbtn2" onclick="buydim(2)">价格：114514</button>
+    </div>
+    <div id="dim3">
+      <span>维度3 </span><span id="d3">114514</span><span> x</span><span id="dm3">1919810</span><span> </span>
+      <button class="btn" id="dbtn3" onclick="buydim(3)">价格：114514</button>
+    </div>
+    <div id="dim4">
+      <span>维度4 </span><span id="d4">114514</span><span> x</span><span id="dm4">1919810</span><span> </span>
+      <button class="btn" id="dbtn4" onclick="buydim(4)">价格：114514</button>
+    </div>
+    <div id="dim5">
+      <span>维度5 </span><span id="d5">114514</span><span> x</span><span id="dm5">1919810</span><span> </span>
+      <button class="btn" id="dbtn5" onclick="buydim(5)">价格：114514</button>
+    </div>
+    <div id="dim6">
+      <span>维度6 </span><span id="d6">114514</span><span> x</span><span id="dm6">1919810</span><span> </span>
+      <button class="btn" id="dbtn6" onclick="buydim(6)">价格：114514</button>
+    </div>
+    <div id="dim7">
+      <span>维度7 </span><span id="d7">114514</span><span> x</span><span id="dm7">1919810</span><span> </span>
+      <button class="btn" id="dbtn7" onclick="buydim(7)">价格：114514</button>
+    </div>
+    <div id="dim8">
+      <span>维度8 </span><span id="d8">114514</span><span> x</span><span id="dm8">1919810</span><span> </span>
+      <button class="btn" id="dbtn8" onclick="buydim(8)">价格：114514</button>
+    </div><br><br>
+    </div>
+      <div align="center">
+      <span style="color: rgb(255, 0, 0)">
+        超过 1.00e100 点数后，点数获取速度将被软上限限制!</span><br>
+      <span style="color: rgb(121, 0, 0)">
+        超过 e1,000,000 点数后，点数获取速度将被二重软上限限制!</span><br>
+      <span style="color: rgb(122, 0, 86)">
+        超过 e100,000,000 点数后，点数获取速度将被三重软上限限制!</span><br>
+      <span style="color: rgb(255, 94, 0)">
+        超过 e1.00e13 点数后，点数获取速度将被四重软上限限制!</span><br>
+      <span style="color: rgb(255, 238, 0)">
+        超过 e1.00e21 点数后，点数获取速度将被五重软上限限制!</span><br>
+      <span style="color: rgb(166, 255, 0)">
+        超过 e1.00e31 点数后，点数获取速度将被六重软上限限制!</span><br>
+      <span style="color: rgb(0, 255, 149)">
+        超过 e1.00e48 点数后，点数获取速度将被七重软上限限制!</span><br>
+      <span style="color: rgb(0, 255, 255)">
+        超过 e1.00e58 点数后，点数获取速度将被八重软上限限制!</span><br>
+      <span style="color: rgb(255, 255, 255)">
+        超过 e1.00e69 点数后，点数获取速度将溢出!</span><br>
+      <span style="color: rgb(255, 197, 215)">
+        超过 e1.00e279 点数后，点数获取速度将二重溢出!</span><br>
+      <span style="color: #99F739">
+        超过 ee1,000,000 点数后，点数获取速度将三重溢出!</span><br>
+      <span style="color: #FF4444">
+        超过 ee1.00e10 点数后，点数获取速度将四重溢出!</span><br>
+      <span style="color: rgb(194, 177, 255)">
+        超过 ee1.00e100 点数后，点数获取速度将淤积!</span><br>
+      <span class="corrupted">
+        超过 10^^5 点数后，点数获取速度将二重淤积!</span><br>
+      <span class="charged_text">
+        超过 10^^10 点数后，点数获取速度将三重淤积!</span><br>
+      <span class="saved_text">
+        超过 10^^1000 点数后，点数获取速度将四重淤积!</span><br>
+      <span class="quark_color">
+        超过 10^^1.00e10 点数后，点数获取速度将五重淤积!</span><br>
+      <span class="f_quark_color">
+        超过 10^^1.00e25 点数后，点数获取速度将六重淤积!</span><br>
+      <span class="ff_quark_color">
+        趆迈 10^^1.00e100 為敱吏，為敱莸变造座將七重淥称!</span><br>
+      <span>
+        趆迈 10^^10^^10 為敱吏，為敱莸变造座將扭曲!</span><br>
+      <span style="color:#aaa">
+        !曲扭重二将度速取获数点，后数点 10^^^10000 过超</span><br>
+      <span style="color:#777">
+        !曲扭重三将度速取获数点，后数点 10^^^10^10 过超</span><br>
+      <span style="color:#444">
+        !曲扭重四将度速取获数点，后数点 10^^^10^50 过超</span><br>
+      <span style="color:#222">
+        !曲扭重五将度速取获数点，后数点 10^^^10^200 过超</span><br>
+      <span style="color:#111;text-shadow: 1px 1px 2px #222, -1px -1px 2px #444, 0 0 24px #666">
+        !曲扭重六将度速取获数点，后数点 10^^^10^1,000,000 过超</span><br>
+        </div>
+    </div>
+    <div id="page2">
+    </div>
+</body>
+</html>
