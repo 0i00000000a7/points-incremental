@@ -1,9 +1,15 @@
-        body {
-            background-color: black;
-            color: white;
-            font-family: 'Courier New', monospace;
-            position: relative;
-        }
+@font-face {
+    font-family: 'Source Han Sans';
+    src: url('SourceHanSansCN-Regular.otf') format('opentype');
+}
+
+body {
+    background-color: black;
+    color: white;
+    font-family: 'Courier New', 'Source Han Sans', monospace, sans-serif;
+    position: relative;
+}
+
         .pts-dis {
           margin: 4px 4px;
     font-size: 48px;
@@ -114,6 +120,7 @@
             text-decoration: none;
             border: 1px solid #777;
             background: #333;
+            font-family: 'Courier New', 'Source Han Sans', monospace, sans-serif;
             color: white;
             display: inline-block;
         }

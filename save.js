@@ -8,7 +8,7 @@ function hard_reset() {
     dbuymult:[null,E(2),E(2),E(2),E(2),E(2),E(2),E(2),E(2),],
     dcost:[null,E(10),E(1e2),E(1e3),E(1e4),E(1e5),E(1e6),E(1e7),E(1e8),],
     dscal:[null,E(10),E(1e2),E(1e3),E(1e4),E(1e5),E(1e6),E(1e7),E(1e8),],
-    scstart:[null,E(1e100),E('ee6'),E('ee8'),E('ee13'),E('ee21'),E('ee31'),E('ee48'),E('ee58'),],
+    scstart:[null,E('1.8e308'),E('ee6'),E('ee8'),E('ee13'),E('ee21'),E('ee31'),E('ee48'),E('ee58'),],
     scpower:[null,E(1/3),E(1/4),E(1/5),E(1/10),E(1/20),E(1/100),E(1/200),E(1/1000)],
     ovstart:[null,E('ee69'),E('ee279'),E('eee6'),E('eee10')],
     ovpower:[null,E(1/2),E(1/4),E(1/10),E(1/100)],
@@ -16,7 +16,12 @@ function hard_reset() {
     silpower:[null,E(4/5),E(3/4),E(2/3),(1/2),E(1/4),E(1/10),E(1/100)],
     warpstart:[null,E('10^^^3'),E('10^^^10000'),E('10^^^10^10'),E('10^^^10^50'),E('10^^^10^200'),E('10^^^10^1000000')],
     warppower:[null,E(3/4),E(1/2),E(1/10),E(1/100),E(1/1000),E(1/1e6)],
-    curpage:"page1"
+    dboost: E(0),
+    dbcost: E(100),
+    dbcscal: E(50),
+    autobuyall: false,
+    curpage:"page1",
+    version:E(1),
   }
 }
 function transformToE(object) {
@@ -32,7 +37,7 @@ function transformToE(object) {
 
 function save() {
 	localStorage.setItem("pts-inc", JSON.stringify(player))
-	console.count('本次保存次数')
+	//console.count('本次保存次数')
 }
 
 setInterval(save, 10)
@@ -44,7 +49,10 @@ function load() {
 		transformToE(loadplayer);
 		for (let key in loadplayer) {
 			player[key] = loadplayer[key];
-			console.clear()
+		}
+		console.clear()
+		if (player.version == undefined) {
+		  player.scstart[1] = E('1.8e308')
 		}
 	}
 }

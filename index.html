@@ -13,10 +13,10 @@
     <script src="display.js"></script>
 </head>
 <body onload="load()">
-    <div align="center">你有<div align="center" class="pts-dis" id="pts">114514</div>点数<br>当前Endgame: 100 维度8(e80点数)</div><br><br>
+    <div align="center">你有<div align="center" class="pts-dis" id="pts">114514</div>点数<br>当前Endgame: 10 维度提升 & 1e460 点数</div><br><br>
     <div id="page1">
     <div id="dims" align="center">
-    <button onclick="buyall()" class="btn">全部购买(1个)</button>
+    <button onclick="buyall()" class="btn">全部购买(1个)</button><br>
     <div id="dim1">
       <span>维度1 </span><span id="d1">114514</span><span> x</span><span id="dm1">1919810</span><span> </span>
       <button class="btn" id="dbtn1" onclick="buydim(1)">价格：114514</button>
@@ -49,10 +49,12 @@
       <span>维度8 </span><span id="d8">114514</span><span> x</span><span id="dm8">1919810</span><span> </span>
       <button class="btn" id="dbtn8" onclick="buydim(8)">价格：114514</button>
     </div><br><br>
+    <div id="dbtimes">维度提升(114514)</div>
+    <button class="btn" id="dimboost" onclick="dimboost()">重置之前的所有东西，但每次购买维度的乘数+0.2!<br>价格：114514 维度8</button><br><br><br>
     </div>
       <div align="center">
       <span style="color: rgb(255, 0, 0)">
-        超过 1.00e100 点数后，点数获取速度将被软上限限制!</span><br>
+        超过 1.80e308 点数后，点数获取速度将被软上限限制!</span><br>
       <span style="color: rgb(121, 0, 0)">
         超过 e1,000,000 点数后，点数获取速度将被二重软上限限制!</span><br>
       <span style="color: rgb(122, 0, 86)">
