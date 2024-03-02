@@ -1,12 +1,7 @@
-@font-face {
-    font-family: 'Source Han Sans';
-    src: url('SourceHanSansCN-Regular.otf') format('opentype');
-}
-
 body {
     background-color: black;
     color: white;
-    font-family: 'Courier New', 'Source Han Sans', monospace, sans-serif;
+    font-family: 'Courier New', monospace, sans-serif;
     position: relative;
 }
 
