@@ -51,8 +51,5 @@ function load() {
 			player[key] = loadplayer[key];
 		}
 		console.clear()
-		if (player.version == undefined) {
-		  player.scstart[1] = E('1.8e308')
-		}
 	}
 }
