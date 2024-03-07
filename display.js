@@ -1,7 +1,7 @@
 function updatedisplay() {
   document.getElementById("pts").innerHTML = format(player.points)
   document.getElementById("square_display").innerHTML = "你有 " + formatWhole(player.square.points) + " 点数<sup>2</sup>"
-  document.getElementById("dimboost").innerHTML = "重置之前的所有东西，但每次购买维度的乘数+0.2<br>"+getdimboostreward()+"价格："+formatWhole(player.dbcost)+" 维度8"
+  document.getElementById("dimboost").innerHTML = "重置之前的所有东西，但每次购买维度的乘数+"+getDimboostEffect()+"<br>"+getdimboostreward()+"价格："+formatWhole(player.dbcost)+" 维度8"
   if (player.dboost.lt(20)) {
     document.getElementById("dbtimes").innerHTML = "维度提升("+formatWhole(player.dboost)+")"
   } else {
@@ -79,6 +79,14 @@ function format_square_upgrades (upg) {
     document.getElementById(upgname).className="upg_bought"
   } else {
     document.getElementById(upgname).className="upg"
+  }
+}
+
+function getDimboostEffect() {
+  if (hasSqUpg(6)) {
+    return "0.22"
+  } else {
+    return "0.2"
   }
 }
 setInterval(updatedisplay,10)
