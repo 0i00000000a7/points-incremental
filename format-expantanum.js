@@ -155,8 +155,8 @@ function format(num, precision=2, small=false) {
         }else {
           p = precision2-Math.log10(bottom)+3
         }
-        if (p<0) {
-          p = 0
+        if (p<1) {
+          p = 1
         }
         return "e".repeat(rep) + regularFormat(m, p) + "e" + commaFormat(e)
     }

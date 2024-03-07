@@ -9,14 +9,20 @@
     <script src="ExpantaNum.js"></script>
     <script src="format-expantanum.js"></script>
     <script src="save.js"></script>
-    <script src="script.js"></script>
     <script src="display.js"></script>
+    <script src="script.js"></script>
 </head>
 <body onload="load()">
-    <div align="center">你有<div align="center" class="pts-dis" id="pts">114514</div>点数<br>当前Endgame: 10 维度提升 & 1e460 点数</div><br><br>
+    <div align="center">你有<div align="center" class="pts-dis" id="pts">114514</div>点数<br>
+    <div id="square_display" style="color: #ff0">你有 114514 点数<sup>2</sup></div>
+    当前Endgame: 1e1065494 点数 & 1e2316 点数<sup>2</sup></div><br>
+    <div align="center">
+      <button onclick="switchpage(1)" class="btn">维度</button>
+      <button id="square_layer" onclick="switchpage(2)" class="square">平方</button>
+      </div><br><br>
     <div id="page1">
     <div id="dims" align="center">
-    <button onclick="buyall()" class="btn">全部购买(1个)</button><br>
+    <button id="buymax" onclick="buyall()" class="btn">全部购买(1个)</button><br>
     <div id="dim1">
       <span>维度1 </span><span id="d1">114514</span><span> x</span><span id="dm1">1919810</span><span> </span>
       <button class="btn" id="dbtn1" onclick="buydim(1)">价格：114514</button>
@@ -50,13 +56,15 @@
       <button class="btn" id="dbtn8" onclick="buydim(8)">价格：114514</button>
     </div><br><br>
     <div id="dbtimes">维度提升(114514)</div>
-    <button class="btn" id="dimboost" onclick="dimboost()">重置之前的所有东西，但每次购买维度的乘数+0.2!<br>价格：114514 维度8</button><br><br><br>
+    <button class="btn" id="dimboost" onclick="dimboost()">重置之前的所有东西，但每次购买维度的乘数+0.2!<br>价格：114514 维度8</button><br><br>
+    <button class="square" id="square_reset" onclick="square_reset()">进行一次点数<sup>2</sup>重置，并获得 114514 点数<sup>2</sup><br>要求：1.000e460</button><br><br><br>
     </div>
       <div align="center">
-      <span style="color: rgb(255, 0, 0)">
-        超过 1.80e308 点数后，点数获取速度将被软上限限制!</span><br>
-      <span style="color: rgb(121, 0, 0)">
+      <span id="softcap1" style="color: rgb(255, 0, 0)">
+        超过 1.80e308 点数后，点数获取速度将被软上限限制!</span>
+      <span id="softcap2" style="color: rgb(121, 0, 0)">
         超过 e1,000,000 点数后，点数获取速度将被二重软上限限制!</span><br>
+        <div id="impossible_softcap">
       <span style="color: rgb(122, 0, 86)">
         超过 e100,000,000 点数后，点数获取速度将被三重软上限限制!</span><br>
       <span style="color: rgb(255, 94, 0)">
@@ -103,9 +111,36 @@
         !曲扭重五将度速取获数点，后数点 10^^^10^200 过超</span><br>
       <span style="color:#111;text-shadow: 1px 1px 2px #222, -1px -1px 2px #444, 0 0 24px #666">
         !曲扭重六将度速取获数点，后数点 10^^^10^1,000,000 过超</span><br>
+      <span>
+        点数在达到K1e19后将达到硬上限!</span><br>
+        </div>
         </div>
     </div>
     <div id="page2">
+      <div align="center">
+        <button id="sq_upg1" class="upg" onclick="buy_square_upg(1)">
+        维度提升价格-10，基于重置数量增益所有维度的初始倍数<br>价格：1 点数<sup>2</sup>
+        </button>
+        <button id="sq_upg2" class="upg" onclick="buy_square_upg(2)">
+        基于当前的点数<sup>2</sup>数量延迟一重软上限<br>价格：1 点数<sup>2</sup>
+        </button>
+        <button id="sq_upg3" class="upg" onclick="buy_square_upg(3)">
+          每次重置都以1维度提升开始<br>
+          价格：10 点数<sup>2</sup>
+        </button>
+        <button id="sq_upg4" class="upg" onclick="buy_square_upg(4)">
+          维度提升不再重置，重置时开始于2维度提升<br>
+          价格：1000 点数<sup>2</sup>
+        </button>
+        <button id="sq_upg5" class="upg" onclick="buy_square_upg(5)">
+          自动维度提升<br>
+          价格：200000 点数<sup>2</sup>
+        </button>
+        <button id="sq_upg6" class="upg" onclick="buy_square_upg(6)">
+          维度提升效果+0.02<br>
+          价格：1000000 点数<sup>2</sup>
+        </button>
+        </div>
     </div>
 </body>
 </html>
