@@ -8,7 +8,7 @@ function loop() {
       player.dmult[x] = player.dmult[x].mul(player.square.times.add(1))
     }
     if (chalComp(1)) {
-      player.dmult[x] = player.dmult[x].mul(player.square.points.add(1))
+      player.dmult[x] = player.dmult[x].mul(player.square.best.add(1))
     }
   }
   calcdim()
@@ -64,10 +64,10 @@ function loop() {
   //console.log('已成功完成1/30秒的计算!')
   //console.log('已成功完成1/30秒的计算​!')
   if (hasSqUpg(2)) {
-    player.scstart[1] = E(2).pow(1024).pow(player.square.points.add(1).log10().add(1).pow(1/2))
+    player.scstart[1] = E(2).pow(1024).pow(player.square.best.add(1).log10().add(1).pow(1/2))
   }
   if (hasSqUpg(9)) {
-    player.scstart[2] = E('ee6').pow(player.square.points.add(1).log10().div(1e4).add(1))
+    player.scstart[2] = E('ee6').pow(player.square.best.add(1).log10().div(1e4).add(1))
   }
   if (currentChal(1)) {
     player.dboost = E(3)
@@ -84,6 +84,9 @@ function loop() {
   }
   if (chalComp(1)) {
     player.dscal = [null,E(10),E(10),E(10),E(10),E(10),E(10),E(10),E(10),]
+  }
+  if (player.square.best.lt(player.square.points)) {
+    player.square.best = player.square.points
   }
 }
 function calcdim() {

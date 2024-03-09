@@ -80,6 +80,9 @@ function fix() {
   if (player.square.times == undefined) {
     player.square.times = E(0)
   }
+  if (player.square.best == undefined) {
+    player.square.best = E(0)
+  }
 }
 
 
