@@ -172,13 +172,9 @@ function CompChal() {
   if (!currentChal(0)) {
     if (player.points.gte(player.chalReq[player.curChal])) {
       player.chalComp[player.curChal] = true
-      exitChal()
+      enterChal(0)
     }
   }
-}
-
-function exitChal() {
-  enterChal(0)
 }
 
 function chalComp(chal) {
