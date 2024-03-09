@@ -15,10 +15,11 @@
 <body onload="load()">
     <div align="center">你有<div align="center" class="pts-dis" id="pts">114514</div>点数<br>
     <div id="square_display" style="color: #ff0">你有 114514 点数<sup>2</sup></div>
-    当前Endgame: 1e1065494 点数 & 1e2316 点数<sup>2</sup></div><br>
+    当前Endgame: 1e191,906,416 点数 & 1e417,189 点数<sup>2</sup></div><br>
     <div align="center">
       <button onclick="switchpage(1)" class="btn">维度</button>
       <button id="square_layer" onclick="switchpage(2)" class="square">平方</button>
+      <button id="chal" onclick="switchpage(3)" class="btn">挑战</button>
       </div><br><br>
     <div id="page1">
     <div id="dims" align="center">
@@ -64,9 +65,9 @@
         超过 1.80e308 点数后，点数获取速度将被软上限限制!</span>
       <span id="softcap2" style="color: rgb(121, 0, 0)">
         超过 e1,000,000 点数后，点数获取速度将被二重软上限限制!</span><br>
-        <div id="impossible_softcap">
-      <span style="color: rgb(122, 0, 86)">
+      <span id="softcap3" style="color: rgb(122, 0, 86)">
         超过 e100,000,000 点数后，点数获取速度将被三重软上限限制!</span><br>
+        <div id="impossible_softcap">
       <span style="color: rgb(255, 94, 0)">
         超过 e1.00e13 点数后，点数获取速度将被四重软上限限制!</span><br>
       <span style="color: rgb(255, 238, 0)">
@@ -112,35 +113,65 @@
       <span style="color:#111;text-shadow: 1px 1px 2px #222, -1px -1px 2px #444, 0 0 24px #666">
         !曲扭重六将度速取获数点，后数点 10^^^10^1,000,000 过超</span><br>
       <span>
-        点数在达到K1e19后将达到硬上限!</span><br>
+        点数在达到K1e19后将锁定为K1e19!</span><br>
         </div>
         </div>
     </div>
     <div id="page2">
-      <div align="center">
-        <button id="sq_upg1" class="upg" onclick="buy_square_upg(1)">
+      <table align="center">
+        <td><button id="sq_upg1" class="upg" onclick="buy_square_upg(1)">
         维度提升价格-10，基于重置数量增益所有维度的初始倍数<br>价格：1 点数<sup>2</sup>
-        </button>
-        <button id="sq_upg2" class="upg" onclick="buy_square_upg(2)">
+        </button></td>
+        <td><button id="sq_upg2" class="upg" onclick="buy_square_upg(2)">
         基于当前的点数<sup>2</sup>数量延迟一重软上限<br>价格：1 点数<sup>2</sup>
-        </button>
-        <button id="sq_upg3" class="upg" onclick="buy_square_upg(3)">
+        </button></td>
+        <td><button id="sq_upg3" class="upg" onclick="buy_square_upg(3)">
           每次重置都以1维度提升开始<br>
           价格：10 点数<sup>2</sup>
-        </button>
-        <button id="sq_upg4" class="upg" onclick="buy_square_upg(4)">
+        </button></td>
+        <td><button id="sq_upg4" class="upg" onclick="buy_square_upg(4)">
           维度提升不再重置，重置时开始于2维度提升<br>
           价格：1000 点数<sup>2</sup>
-        </button>
-        <button id="sq_upg5" class="upg" onclick="buy_square_upg(5)">
+        </button></td>
+        
+        <tr>
+        
+        <td><button id="sq_upg5" class="upg" onclick="buy_square_upg(5)">
           自动维度提升<br>
           价格：200000 点数<sup>2</sup>
-        </button>
-        <button id="sq_upg6" class="upg" onclick="buy_square_upg(6)">
+        </button></td>
+        <td><button id="sq_upg6" class="upg" onclick="buy_square_upg(6)">
           维度提升效果+0.02<br>
-          价格：1000000 点数<sup>2</sup>
-        </button>
-        </div>
+          价格：1000000<br>点数<sup>2</sup>
+        </button></td>
+        <td><button id="sq_upg7" class="upg" onclick="buy_square_upg(7)">
+          移除一重软上限，每秒获取100%点数<sup>2</sup><br>
+          价格：1.00e2316 点数<sup>2</sup>
+        </button></td>
+        <td><button id="sq_upg8" class="upg" onclick="buy_square_upg(8)">
+          解锁挑战，你每秒获得1点数<sup>2</sup>次数<br>
+          价格：1.00e15405 点数<sup>2</sup>
+        </button></td>
+        
+        <tr>
+          
+        <td><button id="sq_upg9" class="upg" onclick="buy_square_upg(9)">
+          基于当前的点数<sup>2</sup>延迟二重软上限<br>
+          价格：1.00e386975 点数<sup>2</sup>
+        </button></td>
+        <td><button id="sq_upg10" class="upg" onclick="buy_square_upg(10)">解锁点数<sup>1.5</sup><br>(Coming Soon!)<br>
+          价格：1.00e417189 点数<sup>2</sup>
+        </button></td>
+        </table>
+    </div>
+    <div id="page3">
+      <div align="center">
+        达成目标后将自动退出并完成挑战!
+        <button class="btn" onclick="exitChal()">退出挑战</button><br><br>
+      </div>
+      <div align="center">
+      <button id="chal1" class="chal" onclick="enterChal(1)">禁用维度5~8，维度提升数量始终为3<br><div id="chalcomp1">未完成</div>目标：1e155 点数<br>奖励：2~8维的价格增长和初始价格都降低至10，点数<sup>2</sup>增益维度</button>
+      </div>
     </div>
 </body>
 </html>

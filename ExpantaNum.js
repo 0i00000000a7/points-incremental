@@ -820,10 +820,10 @@
     if (base===undefined) base=10;
     if (other===undefined) other=ExpantaNum.ONE.clone();
     var t=this.clone();
-    if (other.eq(ExpantaNum.ZERO)) return t;
-    if (other.eq(ExpantaNum.ONE)) return t.logBase(base);
     base=new ExpantaNum(base);
     other=new ExpantaNum(other);
+    if (other.eq(ExpantaNum.ZERO)) return t;
+    if (other.eq(ExpantaNum.ONE)) return t.logBase(base);
     return base.tetr(t.slog(base).sub(other));
   };
   Q.iteratedlog=function (x,y,z){
@@ -936,7 +936,9 @@
         if (number.gt(ExpantaNum(10).pent(a))) {
             a = a.add(b);
         } else {
-            a = a.sub(b);
+            while (number.lt(ExpantaNum(10))) {
+              a = a.sub(b)
+            }
             b = b.div(10);
         }
         if (b.lt(1e-10)) {

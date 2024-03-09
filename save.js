@@ -1,6 +1,7 @@
 function hard_reset() {
   player = {
     points: E(10),
+    ptgain: E(0),
     d:[null,E(0),E(0),E(0),E(0),E(0),E(0),E(0),E(0),],
     dbought:[null,E(0),E(0),E(0),E(0),E(0),E(0),E(0),E(0),],
     dmult:[null,E(1),E(1),E(1),E(1),E(1),E(1),E(1),E(1),],
@@ -29,7 +30,10 @@ function hard_reset() {
       times: E(0),
     },
       square_upgrades: [null,false,false,false,false,false,false,false,false,false,false,false,false],
-      square_upgcost: [null,E(1),E(1),E(10),E(1000),E(2e5),E(1e6),E(Infinity),E(Infinity),E(Infinity),E(Infinity),E(Infinity),E(Infinity)],
+      square_upgcost: [null,E(1),E(1),E(10),E(1000),E(2e5),E(1e6),E('1e2316'),E('1e15405'),E('1e386975'),E('1e417189'),E(Infinity),E(Infinity)],
+      chalComp: [null,false,false,false,false],
+      chalReq: [null,E(1e155),E(Infinity),E(Infinity),E(Infinity)],
+      curChal: 0,
     isPrimaryGameEnd: false,
   }
 }
@@ -77,5 +81,6 @@ function fix() {
     player.square.times = E(0)
   }
 }
+
 
 setInterval(save, 10)

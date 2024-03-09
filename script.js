@@ -7,8 +7,12 @@ function loop() {
     if (hasSqUpg(1)) {
       player.dmult[x] = player.dmult[x].mul(player.square.times.add(1))
     }
+    if (chalComp(1)) {
+      player.dmult[x] = player.dmult[x].mul(player.square.points.add(1))
+    }
   }
   calcdim()
+  player.ptgain = player.d[1].mul(player.dmult[1])
   player.points = player.points.add(player.d[1].mul(player.dmult[1]).div(30));
   for (let i = 1; i <= 8; i++) {
     player.points = player.points.softcap(player.scstart[i],player.scpower[i])
@@ -31,21 +35,19 @@ function loop() {
   for (let x = 1; x <= 8; x++) {
     player.dbuymult[x] = E(2).add(player.dboost.mul(hasSqUpg(5)? 0.22:0.2));
   }
-  if (player.dboost.gte(20)) {
     var base
     if (hasSqUpg(1)) {
       base = E(90).add(player.dbcscal.mul(player.dboost))
     } else {
       base = E(100).add(player.dbcscal.mul(player.dboost))
   }
-  player.dbcost = base.mul(E(1.1).pow(player.dboost.sub(20)))
-} else {
-    if (hasSqUpg(1)) {
-    player.dbcost = E(90).add(player.dbcscal.mul(player.dboost))
-    } else {
-  player.dbcost = E(100).add(player.dbcscal.mul(player.dboost))
+  if (player.dboost.lt(20)) {
+    player.dbcost = base
+  } else if (player.dboost.lt(80)) {
+    player.dbcost = base.mul(E(1.1).pow(player.dboost.sub(1)))
+  } else {
+    player.dbcost = base.mul(E(1.1).pow(60)).mul(E(1.5).pow(player.dboost.sub(80)))
   }
-}
   if (player.dboost.gte(3)) {
     player.autobuyall = true
   }
@@ -64,11 +66,35 @@ function loop() {
   if (hasSqUpg(2)) {
     player.scstart[1] = E(2).pow(1024).pow(player.square.points.add(1).log10().add(1).pow(1/2))
   }
-  player.square_upgcost = [null,E(1),E(1),E(10),E(1000),E(2e5),E(1e6),E(Infinity),E(Infinity),E(Infinity),E(Infinity),E(Infinity),E(Infinity)]
+  if (hasSqUpg(9)) {
+    player.scstart[2] = E('ee6').pow(player.square.points.add(1).log10().div(1e4).add(1))
+  }
+  if (currentChal(1)) {
+    player.dboost = E(3)
+  }
+  if (hasSqUpg(7)) {
+    player.scstart[1] = E(Infinity)
+    player.square.points = player.square.points.add(player.square.willgain.div(30))
+  }
+  player.square_upgcost = [null,E(1),E(1),E(10),E(1000),E(2e5),E(1e6),E('1e2316'),E('1e15405'),E('1e386975'),E('1e417189'),E(Infinity),E(Infinity)]
+  player.chalReq = [null,E(1e155),E(Infinity),E(Infinity),E(Infinity)]
+  CompChal()
+  if (hasSqUpg(8)) {
+    player.square.times = player.square.times.add(1/30)
+  }
+  if (chalComp(1)) {
+    player.dscal = [null,E(10),E(10),E(10),E(10),E(10),E(10),E(10),E(10),]
+  }
 }
 function calcdim() {
-  for (let i = 1; i <= 7; i++) {
+  if (!currentChal(1)) {
+    for (let i = 1; i <= 7; i++) {
     player.d[i] = player.d[i].add(player.d[i+1].mul(player.dmult[i+1]).div(30));
+    }
+  } else {
+    for (let i = 1; i <= 3; i++) {
+    player.d[i] = player.d[i].add(player.d[i+1].mul(player.dmult[i+1]).div(30));
+    }
   }
 }
 
@@ -95,7 +121,7 @@ function buyall() {
   buydim(8)
 }
 function dimboost() {
-  if (player.d[8].gte(player.dbcost)) {
+  if (player.d[8].gte(player.dbcost) && player.dboost.lt(100)) {
     if (!hasSqUpg(4)) {
       player.d = [null,E(0),E(0),E(0),E(0),E(0),E(0),E(0),E(0),],
       player.dbought = [null,E(0),E(0),E(0),E(0),E(0),E(0),E(0),E(0),],
@@ -129,5 +155,38 @@ function buy_square_upg(upg) {
   }
 }
 
+function enterChal(chal) {
+  player.curChal = chal
+  square_reset()
+}
+
+function currentChal(chal) {
+  if (player.curChal == chal) {
+    return true
+  } else {
+    return false
+  }
+}
+
+function CompChal() {
+  if (!currentChal(0)) {
+    if (player.points.gte(player.chalReq[player.curChal])) {
+      player.chalComp[player.curChal] = true
+      exitChal()
+    }
+  }
+}
+
+function exitChal() {
+  enterChal(0)
+}
+
+function chalComp(chal) {
+  if (player.chalComp[chal]) {
+    return true
+  } else {
+    return false
+  }
+}
 
 setInterval(loop,1000/30)
