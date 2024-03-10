@@ -65,6 +65,8 @@ function loop() {
   //console.log('已成功完成1/30秒的计算​!')
   if (hasSqUpg(2)) {
     player.scstart[1] = E(2).pow(1024).pow(player.square.best.add(1).log10().add(1).pow(1/2))
+  } else {
+    player.scstart[1] = E(2).pow(1024)
   }
   if (hasSqUpg(9)) {
     player.scstart[2] = E('ee6').pow(player.square.best.add(1).log10().div(1e4).add(1))
