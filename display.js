@@ -1,7 +1,7 @@
 function updatedisplay() {
   document.getElementById("pts").innerHTML = format(player.points)
   document.getElementById("square_display").innerHTML = "你有 " + formatWhole(player.square.points) + " 点数<sup>2</sup>"
-  document.getElementById("dimboost").innerHTML = "重置之前的所有东西，但每次购买维度的乘数+"+getDimboostEffect()+"<br>"+getdimboostreward()+"价格："+formatWhole(player.dbcost)+" 维度8"
+  document.getElementById("dimboost").innerHTML = "重置之前的所有东西，但每次购买维度的乘数+"+getDimboostEffect()+"<br>"+getdimboostreward()+"价格："+getDimboostCost()+" 维度8"
   if (player.dboost.lt(20)) {
     document.getElementById("dbtimes").innerHTML = "维度提升("+formatWhole(player.dboost)+")"
   } else if (player.dboost.lt(80)){
@@ -15,6 +15,7 @@ function updatedisplay() {
   document.getElementById("softcap1").innerHTML = "超过 "+format(player.scstart[1])+" 每秒点数后，点数获取速度将被软上限限制!"
   document.getElementById("softcap2").innerHTML = "超过 "+format(player.scstart[2])+" 每秒点数后，点数获取速度将被二重软上限限制!"
   document.getElementById("softcap3").innerHTML = "超过 "+format(player.scstart[3])+" 每秒点数后，点数获取速度将被三重软上限限制!"
+  document.getElementById("p1_5-eff-display").innerHTML = "你有 "+format(player.P1_5.points)+" 点数<sup>1.5</sup>，二重软上限被延缓到^"+format(player.P1_5.best.add(10).max(10).log(10).add(9).max(10).log(10),4)
   if (player.canbuymax) {
     document.getElementById("buymax").innerHTML = "全部最大"
   }
@@ -40,6 +41,11 @@ function updatedisplay() {
   } else {
     document.getElementById("page3").style.display = 'block'
   }
+  if (player.curpage  != "page4") {
+    document.getElementById("page4").style.display = 'none'
+  } else {
+    document.getElementById("page4").style.display = 'block'
+  }
   if (player.ptgain.lt(player.scstart[1])) {
     document.getElementById("softcap1").style.display = 'none'
   } else {
@@ -61,11 +67,24 @@ function updatedisplay() {
     } else {
       document.getElementById('square_layer').style.display = 'none'
     }
+    if (player.square.unl) {
+      document.getElementById('square_display').style.display = 'block'
+    } else {
+      document.getElementById('square_display').style.display = 'none'
+    }
     if (hasSqUpg(8)) {
       document.getElementById('chal').style.display = 'inline-block'
     } else {
       document.getElementById('chal').style.display = 'none'
     }
+    if (hasSqUpg(10)) {
+      document.getElementById('point^1.5-p4').style.display = 'inline-block'
+      document.getElementById('point^1.5').style.display = 'inline-block'
+    } else {
+      document.getElementById('point^1.5').style.display = 'none'
+      document.getElementById('point^1.5-p4').style.display = 'none'
+    }
+    document.title = "点数增量：你有 "+format(player.points)+" 点数"
 }
 function formatdim(dim) {
   const d = "d"+dim
@@ -126,5 +145,12 @@ function format_chal(chal) {
   }
 }
 
+function getDimboostCost() {
+  if (player.dboost.lt(100)) {
+    return formatWhole(player.dbcost)
+  } else {
+    return `Rayo(10<sup>100</sup>)`
+  }
+}
 
 setInterval(updatedisplay,10)

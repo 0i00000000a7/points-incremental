@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>点数增量</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="icon.png">
     
     <script src="ExpantaNum.js"></script>
     <script src="format-expantanum.js"></script>
@@ -15,7 +16,7 @@
 <body onload="load()">
     <div align="center">你有<div align="center" class="pts-dis" id="pts">114514</div>点数<br>
     <div id="square_display" style="color: #ff0">你有 114514 点数<sup>2</sup></div>
-    当前Endgame: 1e191,906,416 点数 & 1e417,189 点数<sup>2</sup></div><br>
+    当前Endgame: e2.21e8+ 点数</div><br>
     <div align="center">
       <button onclick="switchpage(1)" class="btn">维度</button>
       <button id="square_layer" onclick="switchpage(2)" class="square">平方</button>
@@ -118,6 +119,10 @@
         </div>
     </div>
     <div id="page2">
+      <div align="center">
+      <button id="square_layer" onclick="switchpage(2)" class="square">升级</button>
+      <button id="point^1.5" onclick="switchpage(4)" class="square">^1.5</button>
+      </div><br>
       <table align="center">
         <td><button id="sq_upg1" class="upg" onclick="buy_square_upg(1)">
         维度提升价格-10，基于重置数量增益所有维度的初始倍数<br>价格：1 点数<sup>2</sup>
@@ -159,7 +164,7 @@
           基于最大的点数<sup>2</sup>延迟二重软上限<br>
           价格：1.00e386975 点数<sup>2</sup>
         </button></td>
-        <td><button id="sq_upg10" class="upg" onclick="buy_square_upg(10)">解锁点数√点数<br>(Coming Soon!)<br>
+        <td><button id="sq_upg10" class="upg" onclick="buy_square_upg(10)">解锁点数<sup>1.5</sup><br>
           价格：1.00e417189 点数<sup>2</sup>
         </button></td>
         </table>
@@ -171,6 +176,15 @@
       </div>
       <div align="center">
       <button id="chal1" class="chal" onclick="enterChal(1)">禁用维度5~8，维度提升数量始终为3<br><div id="chalcomp1">未完成</div>目标：1e155 点数<br>奖励：2~8维的价格增长和初始价格都降低至10，最大点数<sup>2</sup>增益维度</button>
+      </div>
+    </div>
+    <div id="page4">
+      <div align="center">
+      <button id="square_layer" onclick="switchpage(2)" class="square">升级</button>
+      <button id="point^1.5-p4" onclick="switchpage(4)" class="square">^1.5</button>
+      </div><br>
+      <div align="center">
+        <h3 id="p1_5-eff-display">你有 114514 点数<sup>1.5</sup>，二重软上限被延缓到^1919810</h3>
       </div>
     </div>
 </body>

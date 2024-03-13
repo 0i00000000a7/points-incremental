@@ -28,6 +28,7 @@ function hard_reset() {
       unl: false,
       willgain: E(0),
       times: E(0),
+      best: E(0),
     },
       square_upgrades: [null,false,false,false,false,false,false,false,false,false,false,false,false],
       square_upgcost: [null,E(1),E(1),E(10),E(1000),E(2e5),E(1e6),E('1e2316'),E('1e15405'),E('1e386975'),E('1e417189'),E(Infinity),E(Infinity)],
@@ -35,6 +36,12 @@ function hard_reset() {
       chalReq: [null,E(1e155),E(Infinity),E(Infinity),E(Infinity)],
       curChal: 0,
     isPrimaryGameEnd: false,
+    P1_5: {
+      points: E(0),
+      best: E(0),
+      upgrades: [null,false,false,false,false,false,false,false,false,false,false,false,false],
+      upg_cost: [null,E(Infinity),E(Infinity),E(Infinity),E(Infinity),E(Infinity),E(Infinity),E(Infinity),E(Infinity),E(Infinity),E(Infinity),E(Infinity),E(Infinity)],
+    },
   }
 }
 function transformToE(object) {

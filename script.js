@@ -61,8 +61,8 @@ function loop() {
     dimboost()
   }
   getsquareamount()
-  //console.log('已成功完成1/30秒的计算!')
-  //console.log('已成功完成1/30秒的计算​!')
+  //console.error('错误：您正在使用控制台作弊')
+  //console.error('错误：您正在使用控制台作弊​')
   if (hasSqUpg(2)) {
     player.scstart[1] = E(2).pow(1024).pow(player.square.best.add(1).log10().add(1).pow(1/2))
   } else {
@@ -89,6 +89,13 @@ function loop() {
   }
   if (player.square.best.lt(player.square.points)) {
     player.square.best = player.square.points
+  }
+  if (hasSqUpg(10)) {
+    player.P1_5.points = player.P1_5.points.add(1/30)
+    player.scstart[2] = player.scstart[2].pow(player.P1_5.best.add(10).max(10).log(10).add(9).max(10).log(10))
+  }
+  if (player.P1_5.points.gte(player.P1_5.best)) {
+    player.P1_5.best = player.P1_5.points
   }
 }
 function calcdim() {
