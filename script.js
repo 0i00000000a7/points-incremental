@@ -61,8 +61,8 @@ function loop() {
     dimboost()
   }
   getsquareamount()
-  //console.error('错误：您正在使用控制台作弊')
-  //console.error('错误：您正在使用控制台作弊​')
+  console.error('错误：您正在使用控制台作弊')
+  console.error('错误：您正在使用控制台作弊​')
   if (hasSqUpg(2)) {
     player.scstart[1] = E(2).pow(1024).pow(player.square.best.add(1).log10().add(1).pow(1/2))
   } else {
