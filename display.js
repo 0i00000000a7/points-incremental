@@ -50,6 +50,11 @@ function updatedisplay() {
   } else {
     document.getElementById("page4").style.display = 'block'
   }
+  if (!hasP1_5Upg(4)) {
+    document.getElementById("chal2").style.display = 'none'
+  } else {
+    document.getElementById("chal2").style.display = 'block'
+  }
   if (player.ptgain.lt(player.scstart[1])) {
     document.getElementById("softcap1").style.display = 'none'
   } else {
