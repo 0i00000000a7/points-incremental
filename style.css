@@ -177,6 +177,32 @@ body {
     cursor: pointer;
     display: inline-block;
 }
+        .P1_5_upg {
+          width: 184px;
+    height: 120px;
+    background-color: #000;
+    color: #fff;
+    border: 4px solid #CD86F0;
+    border-radius: 8px;
+    font-family: 'Courier New', 'Source Han Sans', sans-serif;
+    font-size: 16px;
+    text-decoration: none;
+    cursor: pointer;
+    display: inline-block;
+}
+        .P1_5_upg_bought {
+          width: 184px;
+    height: 120px;
+    background-color: #00ff80;
+    color: #000;
+    border: 4px solid #CD86F0;
+    border-radius: 8px;
+    font-family: 'Courier New', 'Source Han Sans', sans-serif;
+    font-size: 16px;
+    text-decoration: none;
+    cursor: pointer;
+    display: inline-block;
+}
         .big_upg {
           width: 184px;
     height: 120px;

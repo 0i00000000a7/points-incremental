@@ -33,14 +33,14 @@ function hard_reset() {
       square_upgrades: [null,false,false,false,false,false,false,false,false,false,false,false,false],
       square_upgcost: [null,E(1),E(1),E(10),E(1000),E(2e5),E(1e6),E('1e2316'),E('1e15405'),E('1e386975'),E('1e417189'),E(Infinity),E(Infinity)],
       chalComp: [null,false,false,false,false],
-      chalReq: [null,E(1e155),E(Infinity),E(Infinity),E(Infinity)],
+      chalReq: [null,E(1e155),E('1e75985'),E(Infinity),E(Infinity)],
       curChal: 0,
     isPrimaryGameEnd: false,
     P1_5: {
       points: E(0),
       best: E(0),
       upgrades: [null,false,false,false,false,false,false,false,false,false,false,false,false],
-      upg_cost: [null,E(Infinity),E(Infinity),E(Infinity),E(Infinity),E(Infinity),E(Infinity),E(Infinity),E(Infinity),E(Infinity),E(Infinity),E(Infinity),E(Infinity)],
+      upg_cost: [null,E('300'),E(2500),E(15000),E(20000),E(Infinity),E(Infinity),E(Infinity),E(Infinity),E(Infinity),E(Infinity),E(Infinity),E(Infinity)],
     },
   }
 }
@@ -77,6 +77,13 @@ function load() {
 
 function hasSqUpg(upg) {
   if (player.square_upgrades[upg]) {
+    return true
+  } else {
+    return false
+  }
+}
+function hasP1_5Upg(upg) {
+  if (player.P1_5.upgrades[upg]) {
     return true
   } else {
     return false

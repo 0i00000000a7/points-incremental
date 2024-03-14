@@ -10,6 +10,9 @@ function loop() {
     if (chalComp(1)) {
       player.dmult[x] = player.dmult[x].mul(player.square.best.add(1))
     }
+    if (currentChal(2)) {
+      player.dmult[x] = player.dmult[x].pow(0.01)
+    }
   }
   calcdim()
   player.ptgain = player.d[1].mul(player.dmult[1])
@@ -61,8 +64,8 @@ function loop() {
     dimboost()
   }
   getsquareamount()
-  console.error('错误：您正在使用控制台作弊')
-  console.error('错误：您正在使用控制台作弊​')
+  //console.error('错误：您正在使用控制台作弊')
+  //console.error('错误：您正在使用控制台作弊​')
   if (hasSqUpg(2)) {
     player.scstart[1] = E(2).pow(1024).pow(player.square.best.add(1).log10().add(1).pow(1/2))
   } else {
@@ -79,7 +82,8 @@ function loop() {
     player.square.points = player.square.points.add(player.square.willgain.div(30))
   }
   player.square_upgcost = [null,E(1),E(1),E(10),E(1000),E(2e5),E(1e6),E('1e2316'),E('1e15405'),E('1e386975'),E('1e417189'),E(Infinity),E(Infinity)]
-  player.chalReq = [null,E(1e155),E(Infinity),E(Infinity),E(Infinity)]
+  player.P1_5.upg_cost = [null,E('300'),E(2500),E(15000),E(20000),E(Infinity),E(Infinity),E(Infinity),E(Infinity),E(Infinity),E(Infinity),E(Infinity),E(Infinity)],
+  player.chalReq = [null,E(1e155),E('1e75985'),E(Infinity),E(Infinity)]
   CompChal()
   if (hasSqUpg(8)) {
     player.square.times = player.square.times.add(1/30)
@@ -91,11 +95,25 @@ function loop() {
     player.square.best = player.square.points
   }
   if (hasSqUpg(10)) {
-    player.P1_5.points = player.P1_5.points.add(1/30)
+    var P1_5ptgain = E(1).div(30)
+    var P1_5_upg1_eff = player.P1_5.points.add(10).log(10)
+    if (chalComp(2)) {
+      P1_5_upg1_eff = P1_5_upg1_eff.pow(10)
+    }
+    if (hasP1_5Upg(1)) {
+      P1_5ptgain = P1_5ptgain.mul(P1_5_upg1_eff)
+    }
+    if (hasP1_5Upg(2)) {
+      P1_5ptgain = P1_5ptgain.mul(player.square.points.add(10).log(10).div(1e5))
+    }
+    player.P1_5.points = player.P1_5.points.add(P1_5ptgain)
     player.scstart[2] = player.scstart[2].pow(player.P1_5.best.add(10).max(10).log(10).add(9).max(10).log(10))
   }
   if (player.P1_5.points.gte(player.P1_5.best)) {
     player.P1_5.best = player.P1_5.points
+  }
+  if (hasP1_5Upg(3)) {
+    player.scstart[3] = E('ee8').pow(player.P1_5.best.add(10).max(10).log(10).add(9).max(10).log(10).pow(0.5))
   }
 }
 function calcdim() {
@@ -154,7 +172,7 @@ function square_reset() {
     player.dbought = [null,E(0),E(0),E(0),E(0),E(0),E(0),E(0),E(0),],
     player.dmult = [null,E(1),E(1),E(1),E(1),E(1),E(1),E(1),E(1),],
     player.points = E(10),
-    player.dboost = E(hasSqUpg(4) ? 2 : (hasSqUpg(3) ? 1 : 0));
+    player.dboost = E(hasP1_5Upg(4) ? 10 : (hasSqUpg(4) ? 2 : (hasSqUpg(3) ? 1 : 0)));
     player.square.points = player.square.points.add(player.square.willgain)
     player.square.unl = true
     player.square.times = player.square.times.add(1)
@@ -164,6 +182,12 @@ function buy_square_upg(upg) {
   if (player.square.points.gte(player.square_upgcost[upg]) && !player.square_upgrades[upg]) {
     player.square_upgrades[upg] = true
     player.square.points = player.square.points.sub(player.square_upgcost[upg])
+  }
+}
+function buy_P1_5_upg(upg) {
+  if (player.P1_5.points.gte(player.P1_5.upg_cost[upg]) && !player.P1_5.upgrades[upg]) {
+    player.P1_5.upgrades[upg] = true
+    player.P1_5.points = player.P1_5.points.sub(player.P1_5.upg_cost[upg])
   }
 }
 

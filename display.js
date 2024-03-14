@@ -25,7 +25,11 @@ function updatedisplay() {
   for (let i = 1; i <= 10; i++) {
     format_square_upgrades(i)
   }
+  for (let i = 1; i <= 4; i++) {
+    format_P1_5_upgrades(i)
+  }
   format_chal(1)
+  format_chal(2)
   if (player.curpage  != "page1") {
     document.getElementById("page1").style.display = 'none'
   } else {
@@ -114,6 +118,14 @@ function format_square_upgrades (upg) {
     document.getElementById(upgname).className="upg"
   }
 }
+function format_P1_5_upgrades (upg) {
+  const upgname = "p1.5_upg"+upg
+  if (hasP1_5Upg(upg)) {
+    document.getElementById(upgname).className="P1_5_upg_bought"
+  } else {
+    document.getElementById(upgname).className="P1_5_upg"
+  }
+}
 function format_big_square_upgrades (upg) {
   const upgname = "sq_upg"+upg
   if (hasSqUpg(upg)) {
@@ -154,3 +166,4 @@ function getDimboostCost() {
 }
 
 setInterval(updatedisplay,10)
+我认为是log(max(10,log(max(n+10,10))+9))
