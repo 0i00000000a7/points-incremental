@@ -30,6 +30,14 @@ function hard_reset() {
       times: E(0),
       best: E(0),
     },
+    cube: {
+      points: E(0),
+      unl: false,
+      willgain: E(0),
+      times: E(0),
+      best: E(0),
+      resettime: E(0),
+    },
       square_upgrades: [null,false,false,false,false,false,false,false,false,false,false,false,false],
       square_upgcost: [null,E(1),E(1),E(10),E(1000),E(2e5),E(1e6),E('1e2316'),E('1e15405'),E('1e386975'),E('1e417189'),E(Infinity),E(Infinity)],
       chalComp: [null,false,false,false,false],
@@ -40,7 +48,7 @@ function hard_reset() {
       points: E(0),
       best: E(0),
       upgrades: [null,false,false,false,false,false,false,false,false,false,false,false,false],
-      upg_cost: [null,E('300'),E(2500),E(15000),E(20000),E(Infinity),E(Infinity),E(Infinity),E(Infinity),E(Infinity),E(Infinity),E(Infinity),E(Infinity)],
+      upg_cost: [null,E('300'),E(2500),E(15000),E(20000),E(5e20),E(Infinity),E(Infinity),E(Infinity),E(Infinity),E(Infinity),E(Infinity),E(Infinity)],
     },
   }
 }
@@ -67,10 +75,7 @@ function load() {
 	let loadplayer = JSON.parse(localStorage.getItem("pts-inc"));
 	if (loadplayer != null) {
 		transformToE(loadplayer);
-		for (let key in loadplayer) {
-			player[key] = loadplayer[key];
-		}
-		fix()
+		Object.assign(player, loadplayer)
 		console.clear()
 	}
 }
@@ -90,14 +95,71 @@ function hasP1_5Upg(upg) {
   }
 }
 
-function fix() {
-  if (player.square.times == undefined) {
-    player.square.times = E(0)
-  }
-  if (player.square.best == undefined) {
-    player.square.best = E(0)
-  }
+function reverseString(input) {
+    var charArray = input.split('');
+    charArray.reverse();
+    var reversedString = charArray.join('');
+    return reversedString;  
 }
 
+function encodeBase64(input) {
+    var str = typeof input === 'string' ? input : String(input);
+    var encoded = btoa(unescape(encodeURIComponent(str)));
+    return encoded;  
+} 
+
+function decodeBase64(input) {
+    var encoded = typeof input === 'string' ? input : String(input);
+    var decoded = decodeURIComponent(escape(atob(encoded)));
+    return decoded;  
+}  
+
+function export_copy() {
+  return navigator.clipboard.writeText(reverseString(encodeBase64(JSON.stringify(player))))
+}
+function export_file() {
+  let str = reverseString(encodeBase64(JSON.stringify(player)))
+  let file = new Blob([str], {type: "text/plain"})
+    window.URL = window.URL || window.webkitURL;
+    let a = document.createElement("a")
+    a.href = window.URL.createObjectURL(file)
+    a.download = "Points Incremental Save - "+getCurrentBeijingTime()+".txt"
+    a.click()
+}
+
+function getCurrentBeijingTime() {  
+    const now = new Date();  
+    const utcYear = now.getUTCFullYear();  
+    const utcMonth = String(now.getUTCMonth() + 1).padStart(2, '0');  
+    const utcDate = String(now.getUTCDate()).padStart(2, '0');  
+    const utcHours = now.getUTCHours();  
+    const utcMinutes = now.getUTCMinutes();  
+    const utcSeconds = now.getUTCSeconds();  
+    const utcMilliseconds = now.getUTCMilliseconds();  
+    let beijingHours = (utcHours + 8) % 24;
+    if (beijingHours < 0) {  
+        now.setUTCDate(now.getUTCDate() + 1);
+        beijingHours += 24;  
+    }  
+      
+    const beijingTime = `${utcYear}-${utcMonth}-${utcDate} ${beijingHours.toString().padStart(2, '0')}:${utcMinutes.toString().padStart(2, '0')}:${utcSeconds.toString().padStart(2, '0')}.${utcMilliseconds.toString().padStart(3, '0')}`;  
+    return beijingTime;  
+}
+
+function import_save(save) {
+  importing_player = JSON.parse(decodeBase64(reverseString(save)))
+  transformToE(importing_player);
+  Object.assign(player, importing_player)
+  console.clear()
+}
+
+function formated_hard_reset() {
+  prompt_text = `您确定要硬重置吗？输入以下文字确认，此操作无法取消!：
+I am tired of these endless points.`
+  let promption = prompt(prompt_text);
+  if (promption === "I am tired of these endless points.") {
+    hard_reset()
+  }
+}
 
 setInterval(save, 10)

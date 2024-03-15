@@ -25,7 +25,7 @@ function updatedisplay() {
   for (let i = 1; i <= 10; i++) {
     format_square_upgrades(i)
   }
-  for (let i = 1; i <= 4; i++) {
+  for (let i = 1; i <= 5; i++) {
     format_P1_5_upgrades(i)
   }
   format_chal(1)
@@ -50,6 +50,16 @@ function updatedisplay() {
   } else {
     document.getElementById("page4").style.display = 'block'
   }
+  if (player.curpage  != "page5") {
+    document.getElementById("page5").style.display = 'none'
+  } else {
+    document.getElementById("page5").style.display = 'block'
+  }
+  if (player.curpage === "page4" || player.curpage === "page2") {  
+    document.getElementById("sub_square_button").style.display = 'block';  
+  } else {  
+    document.getElementById("sub_square_button").style.display = 'none';  
+}
   if (!hasP1_5Upg(4)) {
     document.getElementById("chal2").style.display = 'none'
   } else {
@@ -73,8 +83,10 @@ function updatedisplay() {
     document.getElementById("impossible_softcap").style.display = 'none'
     if (player.square.unl) {
       document.getElementById('square_layer').style.display = 'inline-block'
+      document.getElementById('square_upgrades').style.display = 'inline-block'
     } else {
       document.getElementById('square_layer').style.display = 'none'
+      document.getElementById('square_upgrades').style.display = 'none'
     }
     if (player.square.unl) {
       document.getElementById('square_display').style.display = 'block'
@@ -87,11 +99,9 @@ function updatedisplay() {
       document.getElementById('chal').style.display = 'none'
     }
     if (hasSqUpg(10)) {
-      document.getElementById('point^1.5-p4').style.display = 'inline-block'
       document.getElementById('point^1.5').style.display = 'inline-block'
     } else {
       document.getElementById('point^1.5').style.display = 'none'
-      document.getElementById('point^1.5-p4').style.display = 'none'
     }
     document.title = "点数增量：你有 "+format(player.points)+" 点数"
 }
@@ -171,4 +181,3 @@ function getDimboostCost() {
 }
 
 setInterval(updatedisplay,10)
-我认为是log(max(10,log(max(n+10,10))+9))

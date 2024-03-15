@@ -21,6 +21,11 @@
       <button onclick="switchpage(1)" class="btn">维度</button>
       <button id="square_layer" onclick="switchpage(2)" class="square">平方</button>
       <button id="chal" onclick="switchpage(3)" class="btn">挑战</button>
+      <button onclick="switchpage(5)" class="btn">选项</button>
+      </div><br>
+      <div id="sub_square_button" align="center">
+      <button id="square_upgrades" onclick="switchpage(2)" class="square">升级</button>
+      <button id="point^1.5" onclick="switchpage(4)" class="square">^1.5</button>
       </div><br><br>
     <div id="page1">
     <div id="dims" align="center">
@@ -119,10 +124,6 @@
         </div>
     </div>
     <div id="page2">
-      <div align="center">
-      <button id="square_layer" onclick="switchpage(2)" class="square">升级</button>
-      <button id="point^1.5" onclick="switchpage(4)" class="square">^1.5</button>
-      </div><br>
       <table align="center">
         <td><button id="sq_upg1" class="upg" onclick="buy_square_upg(1)">
         维度提升价格-10，基于重置数量增益所有维度的初始倍数<br>价格：1 点数<sup>2</sup>
@@ -181,10 +182,6 @@
     </div>
     <div id="page4">
       <div align="center">
-      <button id="square_layer" onclick="switchpage(2)" class="square">升级</button>
-      <button id="point^1.5-p4" onclick="switchpage(4)" class="square">^1.5</button>
-      </div><br>
-      <div align="center">
         <h3 id="p1_5-eff-display" align="center">你有 114514 点数<sup>1.5</sup>，二重软上限被延缓到^1919810</h3>
       <table align="center">
         <td><button id="p1.5_upg1" class="P1_5_upg" onclick="buy_P1_5_upg(1)">
@@ -199,7 +196,18 @@
         <td><button id="p1.5_upg4" class="P1_5_upg" onclick="buy_P1_5_upg(4)">
         解锁一个挑战，平方重置后开始于 10 维度提升<br>价格：20000 点数<sup>1.5</sup>
         </button></td>
+        <td><button id="p1.5_upg5" class="P1_5_upg" onclick="buy_P1_5_upg(5)">
+        解锁购买项<br>价格：5e20 点数<sup>1.5</sup>
+        </button></td>
         </table>
+      </div>
+    </div>
+    <div id="page5">
+      <div align="center">
+        <button class="btn" onclick="formated_hard_reset()">硬重置</button>
+        <button class="btn" onclick="export_copy()">导出</button>
+        <button class="btn" onclick="export_file()">导出为文件形式</button>
+        <button class="btn" onclick="save = prompt('请输入您的存档');import_save(save)">导入</button>
       </div>
     </div>
 </body>

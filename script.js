@@ -82,7 +82,7 @@ function loop() {
     player.square.points = player.square.points.add(player.square.willgain.div(30))
   }
   player.square_upgcost = [null,E(1),E(1),E(10),E(1000),E(2e5),E(1e6),E('1e2316'),E('1e15405'),E('1e386975'),E('1e417189'),E(Infinity),E(Infinity)]
-  player.P1_5.upg_cost = [null,E('300'),E(2500),E(15000),E(20000),E(Infinity),E(Infinity),E(Infinity),E(Infinity),E(Infinity),E(Infinity),E(Infinity),E(Infinity)],
+  player.P1_5.upg_cost = [null,E('300'),E(2500),E(15000),E(20000),E(5e20),E(Infinity),E(Infinity),E(Infinity),E(Infinity),E(Infinity),E(Infinity),E(Infinity)],
   player.chalReq = [null,E(1e155),E('1e75985'),E(Infinity),E(Infinity)]
   CompChal()
   if (hasSqUpg(8)) {
