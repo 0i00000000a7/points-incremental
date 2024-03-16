@@ -47,7 +47,7 @@ function loop() {
   if (player.dboost.lt(20)) {
     player.dbcost = base
   } else if (player.dboost.lt(80)) {
-    player.dbcost = base.mul(E(1.1).pow(player.dboost.sub(1)))
+    player.dbcost = base.mul(E(1.1).pow(player.dboost.sub(20)))
   } else {
     player.dbcost = base.mul(E(1.1).pow(60)).mul(E(1.5).pow(player.dboost.sub(80)))
   }

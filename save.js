@@ -146,7 +146,8 @@ function getCurrentBeijingTime() {
     return beijingTime;  
 }
 
-function import_save(save) {
+function import_save() {
+  save = prompt('请输入您的存档');
   importing_player = JSON.parse(decodeBase64(reverseString(save)))
   transformToE(importing_player);
   Object.assign(player, importing_player)

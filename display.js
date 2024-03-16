@@ -1,5 +1,9 @@
 function updatedisplay() {
-  document.getElementById("pts").innerHTML = format(player.points)
+  if (player.points.lte('ee6')) {
+  document.getElementById("pts").innerHTML = `你有<div align="center" class="pts-dis">`+format(player.points)+`</div>点数`
+  } else {
+  document.getElementById("pts").innerHTML = `<div align="center" class="pts-dis">`+format(player.points)+`</div>`
+  }
   document.getElementById("square_display").innerHTML = "你有 " + formatWhole(player.square.points) + " 点数<sup>2</sup>"
   document.getElementById("dimboost").innerHTML = "重置之前的所有东西，但每次购买维度的乘数+"+getDimboostEffect()+"<br>"+getdimboostreward()+"价格："+getDimboostCost()+" 维度8"
   if (player.dboost.lt(20)) {
