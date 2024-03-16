@@ -32,37 +32,20 @@ function updatedisplay() {
   for (let i = 1; i <= 5; i++) {
     format_P1_5_upgrades(i)
   }
+  for (let i = 1; i <= 6; i++) {
+    format_page(i)
+  }
   format_chal(1)
   format_chal(2)
-  if (player.curpage  != "page1") {
-    document.getElementById("page1").style.display = 'none'
-  } else {
-    document.getElementById("page1").style.display = 'block'
-  }
-  if (player.curpage  != "page2") {
-    document.getElementById("page2").style.display = 'none'
-  } else {
-    document.getElementById("page2").style.display = 'block'
-  }
-  if (player.curpage  != "page3") {
-    document.getElementById("page3").style.display = 'none'
-  } else {
-    document.getElementById("page3").style.display = 'block'
-  }
-  if (player.curpage  != "page4") {
-    document.getElementById("page4").style.display = 'none'
-  } else {
-    document.getElementById("page4").style.display = 'block'
-  }
-  if (player.curpage  != "page5") {
-    document.getElementById("page5").style.display = 'none'
-  } else {
-    document.getElementById("page5").style.display = 'block'
-  }
   if (player.curpage === "page4" || player.curpage === "page2") {  
     document.getElementById("sub_square_button").style.display = 'block';  
   } else {  
     document.getElementById("sub_square_button").style.display = 'none';  
+}
+  if (player.curpage === "page5" || player.curpage === "page6") {  
+    document.getElementById("sub_option_button").style.display = 'block';  
+  } else {  
+    document.getElementById("sub_option_button").style.display = 'none';  
 }
   if (!hasP1_5Upg(4)) {
     document.getElementById("chal2").style.display = 'none'
@@ -181,6 +164,15 @@ function getDimboostCost() {
     return formatWhole(player.dbcost)
   } else {
     return `Rayo(10<sup>100</sup>)`
+  }
+}
+
+function format_page(page) {
+  let pagename = "page"+page
+  if (player.curpage  != pagename) {
+    document.getElementById(pagename).style.display = 'none'
+  } else {
+    document.getElementById(pagename).style.display = 'block'
   }
 }
 

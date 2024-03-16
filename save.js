@@ -163,4 +163,21 @@ I am tired of these endless points.`
   }
 }
 
+function import_file() {
+  let a = document.createElement("input")
+  a.setAttribute("type", "file")
+  a.click()
+  a.onchange = () => {
+    let fr = new FileReader();
+    fr.onload = () => {
+      let save = fr.result
+      importing_player = JSON.parse(decodeBase64(reverseString(save)))
+      transformToE(importing_player);
+      Object.assign(player, importing_player)
+      console.clear()
+    }
+    fr.readAsText(a.files[0]);
+  }
+}
+
 setInterval(save, 10)

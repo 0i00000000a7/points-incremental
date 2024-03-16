@@ -301,3 +301,7 @@ button {
   text-decoration: none;
   cursor: pointer;
 }
+
+  a {
+    color: #def;
+  }

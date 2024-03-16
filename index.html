@@ -19,7 +19,7 @@
       你有<div class="pts-dis">114514</div>点数<br>
       </div>
     <div id="square_display" style="color: #ff0">你有 114514 点数<sup>2</sup></div>
-    当前Endgame: e5.1e8 点数 & 2.35e20 点数<sup>1.5</sup></div><br>
+    当前Endgame: e5.1e8 点数 & 5.000e20 点数<sup>1.5</sup></div><br>
     <div align="center">
       <button onclick="switchpage(1)" class="btn">维度</button>
       <button id="square_layer" onclick="switchpage(2)" class="square">平方</button>
@@ -29,6 +29,10 @@
       <div id="sub_square_button" align="center">
       <button id="square_upgrades" onclick="switchpage(2)" class="square">升级</button>
       <button id="point^1.5" onclick="switchpage(4)" class="square">^1.5</button>
+      </div>
+      <div id="sub_option_button" align="center">
+      <button id="square_upgrades" onclick="switchpage(5)" class="btn">保存</button>
+      <button id="point^1.5" onclick="switchpage(6)" class="btn">关于</button>
       </div><br><br>
     <div id="page1">
     <div id="dims" align="center">
@@ -214,6 +218,75 @@
         <button class="btn" onclick="export_copy()">导出</button>
         <button class="btn" onclick="export_file()">导出为文件</button>
         <button class="btn" onclick="import_save()">导入</button>
+        <button class="btn" onclick="import_file()">以文件导入</button>
+      </div>
+    </div>
+    <div id="page6">
+      <div align="center">
+        当前版本：v1.2.3<br>
+        游戏作者：0100000a7<br>
+        本游戏使用了<a href="https://github.com/Naruyoko/ExpantaNum.js" target="_blank">ExpantaNum.js</a>
+        <a href="https://github.com/cloudytheconqueror/letter-notation-format/" target="_blank">format-expantanum.js</a>来处理大数字<br>
+        玩到Endgame了?不妨来试一下<br>
+        <a href="https://g1tyx.github.io/antimatter-dimensions/new" target="_blank">反物质维度</a>
+        <a href="https://banana3864.github.io/Periodic-Elements-Incremental-Tree/" target="_blank">元素周期增量树</a>
+        <a href="https://qqqe308.github.io/The-Rhythm-Game-Tree/" target="_blank">音乐游戏树</a>
+        <a href="https://dlsdl.github.io/wind_spirit_creation" target="_blank">风灵作成</a>
+        <h1>-----更新日志-----</h1>
+        <div>
+          <h4>v1.2.3</h4>
+            - 添加以文件导入<br>
+            - 添加更新日志<br>
+        </div>
+        <div>
+          <h4>v1.2.2.1</h4>
+            - 修复超级折算的bug
+        </div>
+        <div>
+          <h4>v1.2.2</h4>
+            - 添加选项<br>
+            - 添加存档选项
+        </div>
+        <div>
+          <h4>v1.2.1</h4>
+            - 添加4个升级<br>
+            - 添加1个挑战
+        </div>
+        <div>
+          <h3>v1.2 点数<sup>1.5</sup></h3>
+            - 添加点数<sup>1.5</sup>
+        </div>
+        <div>
+          <h4>v1.1.1</h4>
+            - 修复0.1版本玩家的软上限bug
+        </div>
+        <div>
+          <h3>v1.1 挑战纪元</h3>
+            - 修改平方升级对增益的计算<br>
+            - 再次修改软上限的显示<br>
+            - 添加4个新升级<br>
+            - 添加1个挑战<br>
+            - 添加究极折算
+        </div>
+        <div>
+          <h2>v1.0 平方</h2>
+            - 添加点数<sup>2</sup><br>
+            - 添加6个升级<br>
+            - 添加维度提升的超级折算<br>
+            - 添加自动维度提升<br>
+            - 修改软上限的显示<br>
+        </div>
+        <div>
+          <h3>v0.2 维维度度提提升升</h3>
+            - 添加维度提升<br>
+            - 延后一重软上限起点<br>
+            - 添加自动购买维度
+        </div>
+        <div>
+          <h3>v0.1 维度</h3>
+            - 添加维度1~8<br>
+            - 添加8个软上限，4个溢出，7个淤积，6个扭曲
+        </div>
       </div>
     </div>
 </body>
