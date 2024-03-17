@@ -1,4 +1,5 @@
 function loop() {
+  fix()
   for (let i = 1; i <= 8; i++) {
     player.dcost[i] = player.dscal[i].pow(player.dbought[i].add(1));
   }
@@ -64,8 +65,8 @@ function loop() {
     dimboost()
   }
   getsquareamount()
-  console.error('错误：您正在使用控制台作弊')
-  console.error('错误：您正在使用控制台作弊​')
+  //console.error('错误：您正在使用控制台作弊')
+  //console.error('错误：您正在使用控制台作弊​')
   if (hasSqUpg(2)) {
     player.scstart[1] = E(2).pow(1024).pow(player.square.best.add(1).log10().add(1).pow(1/2))
   } else {
@@ -218,6 +219,12 @@ function chalComp(chal) {
     return true
   } else {
     return false
+  }
+}
+
+function fix() {
+  if (player.square.best === undefined) {
+    player.square.best = E(0)
   }
 }
 

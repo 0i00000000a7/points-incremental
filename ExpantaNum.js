@@ -967,6 +967,27 @@
   P.pentate=P.pent=function (other){
     return this.arrow(3)(other);
   };
+  P.hexate=P.hex=function (other){
+    return this.arrow(4)(other);
+  };
+  P.heptate=P.hept=function (other){
+    return this.arrow(5)(other);
+  };
+  P.octate=P.oct=function (other){
+    return this.arrow(6)(other);
+  };
+  P.ennate=P.enna=function (other){
+    return this.arrow(7)(other);
+  };
+  P.decate=P.dec=function (other){
+    return this.arrow(8)(other);
+  };
+  P.endecate=P.endec=function (other){
+    return this.arrow(9)(other);
+  };
+  P.dodecate=P.dodec=function (other){
+    return this.arrow(10)(other);
+  };
   Q.pentate=Q.pent=function (x,y){
     return ExpantaNum.arrow(x,3,y);
   };

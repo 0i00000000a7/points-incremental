@@ -37,16 +37,8 @@ function updatedisplay() {
   }
   format_chal(1)
   format_chal(2)
-  if (player.curpage === "page4" || player.curpage === "page2") {  
-    document.getElementById("sub_square_button").style.display = 'block';  
-  } else {  
-    document.getElementById("sub_square_button").style.display = 'none';  
-}
-  if (player.curpage === "page5" || player.curpage === "page6") {  
-    document.getElementById("sub_option_button").style.display = 'block';  
-  } else {  
-    document.getElementById("sub_option_button").style.display = 'none';  
-}
+  format_subpage('sub_square_button', 4, 2)
+  format_subpage('sub_option_button', 5, 6)
   if (!hasP1_5Upg(4)) {
     document.getElementById("chal2").style.display = 'none'
   } else {
@@ -176,4 +168,22 @@ function format_page(page) {
   }
 }
 
+function format_subpage(elementId, ...pageIds) {  
+    var element = document.getElementById(elementId);  
+    if (element) {  
+        // 遍历所有传入的页面标识符  
+        for (let pageId of pageIds) {  
+            // 如果当前页面匹配任何一个传入的页面标识符  
+            let pagename = "page"+pageId
+            if (player.curpage === String(pagename)) {  
+                element.style.display = 'block';  
+                return; // 找到匹配项后直接返回，不再继续检查其他页面标识符  
+            }  
+        }  
+        // 如果没有找到匹配的页面标识符，隐藏元素  
+        element.style.display = 'none';  
+    } else {  
+        return
+    }  
+} 
 setInterval(updatedisplay,10)
